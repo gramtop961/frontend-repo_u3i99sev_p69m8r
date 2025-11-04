@@ -1,33 +1,33 @@
-import { useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Sections from './components/Sections';
-import Footer from './components/Footer';
-import Admin from './components/Admin';
+import { useEffect, useMemo, useState } from 'react'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Sections from './components/Sections'
+import Footer from './components/Footer'
+import Admin from './components/Admin'
 
-export default function App() {
-  const [isAdmin, setIsAdmin] = useState(typeof window !== 'undefined' && window.location.hash === '#admin');
+function App() {
+  const [hash, setHash] = useState(window.location.hash)
 
   useEffect(() => {
-    function onHashChange() {
-      setIsAdmin(window.location.hash === '#admin');
-    }
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
-  }, []);
+    const onHashChange = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  const isAdmin = useMemo(() => hash === '#admin', [hash])
 
   if (isAdmin) {
-    return <Admin />;
+    return <Admin />
   }
 
   return (
-    <div className="font-['Inter','Geist','Manrope',system-ui,Arial] bg-white text-black">
+    <div className="min-h-screen bg-neutral-950 text-white font-inter">
       <Navbar />
-      <main>
-        <Hero />
-        <Sections />
-      </main>
+      <Hero />
+      <Sections />
       <Footer />
     </div>
-  );
+  )
 }
+
+export default App
