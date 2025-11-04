@@ -27,7 +27,7 @@ export default function Navbar() {
             ))}
             <div className="h-5 w-px bg-black/10" />
             <a
-              href="https://instagram.com/dot.batame"
+              href="https://www.instagram.com/dot.batame/"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-black/80 hover:text-black"
@@ -73,7 +73,7 @@ export default function Navbar() {
               ))}
               <div className="flex items-center gap-4 py-3">
                 <a
-                  href="https://instagram.com/dot.batame"
+                  href="https://www.instagram.com/dot.batame/"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-black/80 hover:text-black"
